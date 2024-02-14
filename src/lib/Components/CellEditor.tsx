@@ -32,7 +32,7 @@ export const CellEditorRenderer: React.FC = () => {
 
     const renders = React.useRef(0);
 
-    const [position, dispatch] = React.useReducer(calculateCellEditorPosition as (options: PositionState) => any, {state, location}); // used to lock cell editor position
+    const [position, dispatch] = React.useReducer(calculateCellEditorPosition as (options: PositionState) => any, { state, location }); // used to lock cell editor position
 
     React.useEffect(() => {
         renders.current += 1;
@@ -51,7 +51,8 @@ export const CellEditorRenderer: React.FC = () => {
             left: position.left && position.left - 1,
             height: location.row.height + 1,
             width: location.column.width + 1,
-            position: 'fixed'
+            //position: 'fixed'
+            position: 'relative',
         }}
     >
         {cellTemplate.render(currentlyEditedCell, true, (cell: Compatible<Cell>, commit: boolean) => {
